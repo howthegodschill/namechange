@@ -1,14 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 # This script will prompt the user for input,
 # then quickly change all of the necessary names for a Mac
 
-echo Please enter the user\'s initials followed by their ID number
+ComputerName=`/usr/bin/osascript << EOT
+tell application "System Events"
+    activate
+    set ComputerName to text returned of (display dialog "Please enter the user's name and ID number" default answer "" with icon 2)
+end tell
+EOT`
 
-read computerName
+#Set New Computer Name
+echo $ComputerName
+scutil --set HostName $ComputerName
+scutil --set LocalHostName $ComputerName
+scutil --set ComputerName $ComputerName
 
-sudo scutil --set HostName $computerName
-sudo scutil --set LocalHostName $computerName
-sudo scutil --set ComputerName $computerName
-dscacheutil -flushcache
+echo "Rename Successful"
 
-echo The computer name is now $computerName
+exit 0
