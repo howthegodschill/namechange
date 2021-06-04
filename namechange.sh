@@ -1,4 +1,6 @@
 #!/bin/sh
+# This script will prompt the user for input,
+# then quickly change all of the necessary names for a Mac
 
 echo Please enter the user\'s initials followed by their ID number
 
