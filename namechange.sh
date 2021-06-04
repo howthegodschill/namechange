@@ -9,5 +9,6 @@ read computerName
 sudo scutil --set HostName $computerName
 sudo scutil --set LocalHostName $computerName
 sudo scutil --set ComputerName $computerName
+dscacheutil -flushcache
 
 echo The computer name is now $computerName
