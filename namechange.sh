@@ -15,6 +15,7 @@ scutil --set HostName $ComputerName
 scutil --set LocalHostName $ComputerName
 scutil --set ComputerName $ComputerName
 
-echo "Rename Successful"
+/usr/bin/osascript -e \
+'tell application "System Events" to (display dialog "Name change successful!" buttons {"OK"} default button "OK" with icon 2)'
 
 exit 0
